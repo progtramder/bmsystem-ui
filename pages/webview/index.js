@@ -10,7 +10,6 @@ Page({
         page: `https://${server}/baoming?event=${encodeURIComponent(event)}&code=${code}`
       })
     } catch(err) {
-      console.log(err)
       app.alert(err)
     }
   },

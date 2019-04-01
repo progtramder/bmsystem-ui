@@ -5,11 +5,6 @@ App({
     server: 'xsj.chneic.sh.cn'
   },
 
-  onLaunch: function () {
-    wx.cloud.init({
-    })
-  },
-
   getServer() {
     return this.globalData.server
   },
