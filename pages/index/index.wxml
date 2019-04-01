@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="page-body">
+    <view class="picture">
+      <image mode="widthFix" src="/image/school.jpg"/>
+    </view>
+    <view class="event-wrapper">
+      <navigator wx:for="{{eventList}}" wx:key="item" url="../webview/index?event={{item}}" class="nav-item">
+        <image class="icon" src="/image/baoming.png"/>
+        <view>{{item}}</view>
+      </navigator>
+    </view>
+  </view>
+</view>
