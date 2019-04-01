@@ -1,4 +1,3 @@
-const regeneratorRuntime = require("./pages/common/runtime")
 App({
   
   globalData: {
@@ -23,7 +22,7 @@ App({
     })
   },
 
-  async getEvents() {
+  getEvents() {
     const server = this.getServer()
     const url = `https://${server}/get-events`
     return new Promise((resolve, reject) => {
