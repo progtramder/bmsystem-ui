@@ -5,7 +5,7 @@ Page({
     const event = options.event
     try {
       const code = await app.getCode()
-      const server = await app.getServer()
+      const server = app.getServer()
       this.setData({
         page: `https://${server}/baoming?event=${encodeURIComponent(event)}&code=${code}`
       })

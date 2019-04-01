@@ -2,7 +2,7 @@ const regeneratorRuntime = require("./pages/common/runtime")
 App({
   
   globalData: {
-    server: ''
+    server: 'xsj.chneic.sh.cn'
   },
 
   onLaunch: function () {
@@ -10,23 +10,8 @@ App({
     })
   },
 
-  async getServer() {
-    if (this.globalData.server != '') {
-      return this.globalData.server
-    }
-    try {
-      const db = wx.cloud.database()
-      const res = await db.collection('dns').get()
-      const domain = res.data[0].domain
-      this.setServer(domain)
-      return domain
-    } catch(err) {
-      throw '网络异常'
-    }
-  },
-
-  setServer(server) {
-    this.globalData.server = server
+  getServer() {
+    return this.globalData.server
   },
 
   getCode() {
@@ -44,7 +29,7 @@ App({
   },
 
   async getEvents() {
-    const server = await this.getServer()
+    const server = this.getServer()
     const url = `https://${server}/get-events`
     return new Promise((resolve, reject) => {
       wx.request({
@@ -69,7 +54,7 @@ App({
   alert(content) {
     wx.showModal({
       content: content,
-      confirmColor: 'orange',
+      confirmColor: '#FFA500',
       confirmText: '知道了',
       showCancel: false
     })
