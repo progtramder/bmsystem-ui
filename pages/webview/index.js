@@ -2,7 +2,8 @@ const regeneratorRuntime = require("../common/runtime")
 const app = getApp()
 Page({
   async onLoad (options) {
-    const event = options.event
+    const event = decodeURIComponent(options.event)
+    console.log(event)
     try {
       const code = await app.getCode()
       const server = app.getServer()
