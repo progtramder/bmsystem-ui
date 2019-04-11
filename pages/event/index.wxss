@@ -1,0 +1,74 @@
+.poster {
+  margin-top: 10rpx;
+  width: 730rpx;
+  box-sizing: border-box;
+}
+.seperator {
+  height: 80rpx;
+}
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+}
+.input-wrapper {
+  width: 90%;
+  margin-bottom: 80rpx;
+  border-color: beige;
+  border-width: 5rpx;
+  border-style: solid;
+  border-radius: 8rpx;
+  height: 100rpx;
+  box-sizing: border-box;
+}
+.input-wrapper input {
+  height: 100%;
+  width: 100%;
+  border-style: none;
+  box-sizing: border-box;
+}
+
+.input-wrapper picker {
+  height: 100rpx;
+  width: 100%;
+  border-style: none;
+  box-sizing: border-box;
+  line-height: 100rpx;
+}
+
+.input-disabled {
+  color: gray;
+}
+
+.placeholder {
+  color:gray;
+}
+
+.selection {
+  width: 90%;
+  margin-bottom: 30rpx;
+  border-color: beige;
+  border-width: 5rpx;
+  border-style: solid;
+  border-radius: 8rpx;
+  height: 100rpx;
+  background-color: white;
+  box-sizing: border-box;
+}
+.submit {
+  height: 100rpx;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-style: solid;
+  border-width: 5rpx;
+  border-color: beige;
+  border-radius: 8rpx;
+  color: orange;
+  font-weight: bold;
+  box-sizing: border-box;
+}

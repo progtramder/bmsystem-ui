@@ -1,0 +1,66 @@
+<view class="container">
+  <view class="page-body">
+    <view class="page-wrapper">
+      <image wx:if="{{poster}}" class="poster" mode="widthFix" src="{{poster}}"/>
+      <view class="seperator"></view>
+      <block wx:for="{{form}}" wx:key="item" >
+        <view wx:if="{{item.type=='text'}}" class="input-wrapper">
+          <input value="{{userData[item.name]}}"
+            disabled="{{mod.disable(status)}}"
+            class="{{mod.disable(status)?'input-disabled':''}}"
+            cursor-spacing="80" 
+            placeholder-class="placeholder" 
+            placeholder="{{item.name}}" 
+            data-key="{{item.name}}"
+            bindinput="getInput"
+          />
+        </view>
+        <view wx:if="{{item.type=='number'}}" class="input-wrapper">
+          <input value="{{userData[item.name]}}" 
+            disabled="{{mod.disable(status)}}"
+            class="{{mod.disable(status)?'input-disabled':''}}"
+            type="number" cursor-spacing="80" 
+            placeholder-class="placeholder" 
+            placeholder="{{item.name}}" 
+            data-key="{{item.name}}"
+            bindinput="getInput"
+          />
+        </view>
+        <view wx:if="{{item.type=='idcard'}}" class="input-wrapper">
+          <input value="{{userData[item.name]}}" 
+            disabled="{{mod.disable(status)}}"
+            class="{{mod.disable(status)?'input-disabled':''}}"
+            type="idcard" cursor-spacing="80" 
+            placeholder-class="placeholder" 
+            placeholder="{{item.name}}" 
+            data-key="{{item.name}}"
+            bindinput="getInput"
+          />
+        </view>
+        <view wx:if="{{item.type=='select'}}" class="input-wrapper">
+          <picker bindchange="bindPickerChange" 
+            class="{{mod.disable(status)?'input-disabled':(userData[item.name]?'':'input-disabled')}}"
+            range="{{item.value}}"
+            data-component="{{item}}"
+            disabled="{{mod.disable(status)}}"
+          >
+            {{userData[item.name]?userData[item.name]:item.name}}
+          </picker>
+        </view>
+        <view wx:if="{{item.type=='session'}}" class="input-wrapper">
+          <picker bindchange="bindSessionChange" 
+            class="{{mod.disable(status)?'input-disabled':(userData.session===''?'input-disabled':'')}}"
+            range="{{status.sessions}}"
+            range-key="description"
+            disabled="{{mod.disable(status)}}"
+          >
+            {{userData.session===''?item.name:status.sessions[userData.session].description}}
+          </picker>
+        </view>
+      </block>
+      <view wx:if="{{status}}" class="submit" bindtap="handleSubmit">{{mod.getStatus(status)}}</view>
+      <view class="seperator"></view>
+    </view>
+    <wxs src="./index.wxs" module="mod" />
+  </view>
+</view>

@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/webview/index"
+    "pages/webview/index",
+    "pages/event/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

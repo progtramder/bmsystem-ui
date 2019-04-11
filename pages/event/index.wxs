@@ -1,0 +1,25 @@
+isFull = function(sessions) {
+  for (var i = 0; i < sessions.length; i++) {
+    if (sessions[i].number < sessions[i].limit) {
+      return false
+    }
+  }
+  return true
+}
+
+var getStatus = function(status) {
+  if (status.expired) return '报名已结束'
+  if (status.registered) return '已报名'
+  if (!status.started) return '报名尚未开始'
+  if (isFull(status.sessions)) return '已报满'
+  return '我要报名'
+}
+
+var disable = function (status) {
+  return !status.started || status.expired || status.registered || isFull(status.sessions)
+}
+
+module.exports = {
+  getStatus: getStatus,
+  disable: disable
+}
