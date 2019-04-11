@@ -24,6 +24,7 @@
   box-sizing: border-box;
 }
 .input-wrapper input {
+  padding-left: 10rpx;
   height: 100%;
   width: 100%;
   border-style: none;
@@ -31,6 +32,7 @@
 }
 
 .input-wrapper picker {
+  padding-left: 10rpx;
   height: 100rpx;
   width: 100%;
   border-style: none;
@@ -46,17 +48,6 @@
   color:gray;
 }
 
-.selection {
-  width: 90%;
-  margin-bottom: 30rpx;
-  border-color: beige;
-  border-width: 5rpx;
-  border-style: solid;
-  border-radius: 8rpx;
-  height: 100rpx;
-  background-color: white;
-  box-sizing: border-box;
-}
 .submit {
   height: 100rpx;
   width: 90%;
