@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 .seperator {
-  height: 80rpx;
+  height: 90rpx;
 }
 .page-wrapper {
   display: flex;
@@ -15,7 +15,7 @@
 }
 .input-wrapper {
   width: 90%;
-  margin-bottom: 80rpx;
+  margin-bottom: 90rpx;
   border-color: beige;
   border-width: 5rpx;
   border-style: solid;
@@ -33,7 +33,7 @@
 
 .input-wrapper picker {
   padding-left: 10rpx;
-  height: 100rpx;
+  height: 100%;
   width: 100%;
   border-style: none;
   box-sizing: border-box;
@@ -61,5 +61,6 @@
   border-radius: 8rpx;
   color: orange;
   font-weight: bold;
+  font-size: 32rpx;
   box-sizing: border-box;
 }
