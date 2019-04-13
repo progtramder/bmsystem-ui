@@ -30,7 +30,6 @@
   border-style: none;
   box-sizing: border-box;
 }
-
 .input-wrapper picker {
   padding-left: 10rpx;
   height: 100%;

@@ -42,6 +42,7 @@
             class="{{mod.disable(status)?'input-disabled':(userData[item.name]?'':'input-disabled')}}"
             range="{{item.value}}"
             data-component="{{item}}"
+            value="{{mod.indexOf(item.value, userData[item.name])}}"
             disabled="{{mod.disable(status)}}"
           >
             {{userData[item.name]?userData[item.name]:item.name}}
@@ -52,6 +53,7 @@
             class="{{mod.disable(status)?'input-disabled':(userData.session===''?'input-disabled':'')}}"
             range="{{status.sessions}}"
             range-key="description"
+            value="{{userData.session}}"
             disabled="{{mod.disable(status)}}"
           >
             {{userData.session===''?item.name:status.sessions[userData.session].description}}

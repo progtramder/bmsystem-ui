@@ -19,7 +19,12 @@ var disable = function (status) {
   return !status.started || status.expired || status.registered || isFull(status.sessions)
 }
 
+var indexOf = function (arr, el) {
+  return arr.indexOf(el)
+}
+
 module.exports = {
   getStatus: getStatus,
-  disable: disable
+  disable: disable,
+  indexOf: indexOf
 }
