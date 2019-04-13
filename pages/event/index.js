@@ -164,7 +164,6 @@ Page({
         })
       }
       app.alert(res.errMsg)
-      console.log(this.data)
     } catch (err) {
       app.alert(err)
     }
