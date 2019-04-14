@@ -24,7 +24,6 @@ Page({
       })
       res = await app.getStatus(event)
       const started = res.started
-      const expired = res.expired
       const sessions = res.sessions
       let registered = false
       if (sessions.length == 1) {
@@ -42,7 +41,6 @@ Page({
         form,
         status: {
           started,
-          expired,
           registered,
           sessions
         },
@@ -60,7 +58,6 @@ Page({
     const res = await app.getStatus(this.data.event)
     const status = this.data.status
     status.started = res.started
-    status.expired = res.expired
     status.sessions = res.sessions
     this.setData({
       status
@@ -85,6 +82,10 @@ Page({
   bindSessionChange(e) {
     const index = e.detail.value
     const sessions = this.data.status.sessions
+    if (sessions[index].expired) {
+      app.alert('该场次已结束')
+      return
+    }
     if (sessions[index].number >= sessions[index].limit) {
       app.alert('该场次已报满')
       return
@@ -142,8 +143,16 @@ Page({
       }
       return true
     }
+    let expired = (sessions) => {
+      for (let i = 0; i < sessions.length; i++) {
+        if (!sessions[i].expired) {
+          return false
+        }
+      }
+      return true
+    }
     const status = this.data.status
-    if (!status.started || status.expired || status.registered || isFull(status.sessions)) {
+    if (!status.started || expired(status.sessions) || status.registered || isFull(status.sessions)) {
       return
     }
 
