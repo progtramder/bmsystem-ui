@@ -22,7 +22,9 @@ App({
     })
   },
 
-  request(url) {
+  getEvents(school) {
+    const server = this.getServer()
+    const url = `https://${server}/get-events?school=${school}`
     return new Promise((resolve, reject) => {
       wx.request({
         url,
@@ -41,30 +43,6 @@ App({
         }
       })
     })
-  },
-
-  getEvents() {
-    const server = this.getServer()
-    const url = `https://${server}/get-events`
-    return this.request(url)
-  },
-
-  getEventProfile(event, code) {
-    const server = this.getServer()
-    const url = `https://${server}/event-profile?event=${event}&code=${code}`
-    return this.request(url)
-  },
-
-  getStatus(event) {
-    const server = this.getServer()
-    const url = `https://${server}/status?event=${event}`
-    return this.request(url)
-  },
-
-  getRegisterInfo(event, openId) {
-    const server = this.getServer()
-    const url = `https://${server}/register-info?event=${event}&openid=${openId}`
-    return this.request(url)
   },
 
   alert(content) {
