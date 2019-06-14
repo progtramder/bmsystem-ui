@@ -1,0 +1,29 @@
+.corp-info {
+  position: absolute;
+  top: 10%;
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.corp-info image {
+  border-radius: 10rpx;
+  width: 150rpx;
+  height: 150rpx;
+  box-sizing: border-box;
+}
+
+.corp-info view {
+  margin-top: 20rpx;
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  width: 90%;
+  background-color: #0084FF;
+  color: white;
+}

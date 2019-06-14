@@ -1,0 +1,64 @@
+/* miniprogram/pages/album/index.wxss */.cover {
+  width: 100%;
+  background-color: #F2F6FC;
+  margin-bottom: 20rpx;
+  position: relative;
+}
+.cover-image {
+  display: block;
+  width: 100%;
+  max-height: 500rpx;
+}
+
+.product-content-title {
+  background-color: white;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  font-weight: bold;
+  padding-left: 20rpx;
+}
+
+.album-info-item {
+  display: flex;
+  flex-direction: row;
+  padding: 20rpx 20rpx;
+  border-bottom-color: #f0f0f0;
+  border-bottom-width: .1rpx;
+  border-bottom-style: solid;
+  background-color: white;
+}
+
+.album-info-item > view {
+  line-height: 2rem;
+  width: 100rpx;
+  font-weight: bold;
+  font-size: 34rpx;
+}
+.album-info-item > input {
+  height: 2rem;
+  color: gray;
+  width: 600rpx;
+}
+
+.album-info-item > textarea {
+  color: gray;
+  width: 100%;
+  min-height: 200rpx;
+  box-sizing: border-box;
+}
+
+.cover-icon {
+  position: absolute;
+  width: 80rpx;
+  height: 80rpx;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: dashed 4rpx #C0C4CC;
+  color: #C0C4CC;
+  background-color: #F2F6FC;
+  box-sizing: border-box;
+}

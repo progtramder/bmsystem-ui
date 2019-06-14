@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="page-body">
+    <view wx:for="{{albums}}" wx:key="item" class="album-item">
+      <exhibit-item url="../album-detail/index?id={{item._id}}"
+        imgpath="{{item.cover}}"
+        title="{{item.subject}}"
+        body="{{item.brief}}"
+        footer=""
+      />
+    </view>
+  </view>
+</view>
+<image wx:if="{{admin}}" src="/image/admin.png" bindtap="switchToAdmin" class="float-button"/>

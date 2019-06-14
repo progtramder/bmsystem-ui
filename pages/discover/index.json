@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "时光如梭",
+  "usingComponents": {
+    "exhibit-item": "/components/exhibit/index"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

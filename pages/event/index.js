@@ -2,7 +2,6 @@ const regeneratorRuntime = require("../common/runtime")
 const app = getApp()
 Page({
   async onLoad(options) {
-    const school = decodeURIComponent(options.school)
     const event = decodeURIComponent(options.event)
     wx.setNavigationBarTitle({
       title: event,
@@ -36,7 +35,6 @@ Page({
         registered = true
       }
       this.setData({
-        school,
         event,
         openId,
         poster,

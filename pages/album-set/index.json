@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "相册管理",
+  "usingComponents": {
+    "exhibit-item": "/components/exhibit/index"
+  }
+}

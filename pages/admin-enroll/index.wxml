@@ -1,0 +1,14 @@
+<view class="container">
+  <view class="page-body">
+    <view class="corp-info">
+      <image src="/image/logo.png"></image>
+      <view>民办新世纪小学</view>
+      <view>邀请你成为小程序管理员</view>
+    </view>
+    <button 
+      bindtap="accept"
+    >
+      接受
+    </button>
+  </view>
+</view>

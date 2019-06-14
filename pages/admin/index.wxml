@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="page-body">
+    <view class="body-wrapper">
+      <view class="seperator"/>
+      <navigator url="../album-set/index" class="nav-item">
+        <image class="icon" src="/image/album-set.png"/>
+        <view>相册管理</view>
+      </navigator>
+      <view class="seperator"/>
+      <button open-type="share" hover-class="hover" class="invite-button">
+        <image class="icon" src="/image/invite-admin.png"/>
+        <view>邀请管理员</view>
+      </button>
+    </view>
+  </view>
+</view>
+<image src="/image/home.png" bindtap="switchToHome" class="float-button"/>

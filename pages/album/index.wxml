@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="page-body">
+    <view class="cover">
+      <image bindtap="addCover" class="cover-image" src="{{cover}}"/>
+      <view wx:if="{{!cover}}" class="cover-icon iconfont icon-image" bindtap="addCover"></view>
+    </view>
+    <view class="album-info-item">
+      <view>主题</view>
+      <input value="{{subject}}" bindinput="getSubject" placeholder="主题名称" />
+    </view>
+    <view class="album-info-item">
+      <textarea auto-height="true" value="{{brief}}" bindinput="getBrief" cursor-spacing="50" placeholder="精彩介绍"></textarea>
+    </view>
+    <rich-editor id="rich_editor" bind:add="addDetail" bind:delete="deleteDetail"/>
+  </view>
+</view>
+<view class="float-bar" bindtap="saveAlbum">保存</view>

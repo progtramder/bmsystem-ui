@@ -1,0 +1,26 @@
+<view class="container">
+  <view class="page-body">
+    <view class="cover">
+      <image src="{{album.cover}}"/>
+      <view>{{album.subject}}</view>
+    </view>
+    <view class="album-brief">{{album.brief}}</view>
+    <view class="album-container">
+      <view class="album-content">
+        <block wx:for="{{album.detail}}" wx:key="item">
+          <image
+            bindtap="imageTap"
+            wx:if="{{item.type=='image'}}" 
+            mode="widthFix" 
+            class="album-image" 
+            src="{{item.src}}"
+            data-imgpath="{{item.src}}"
+          />
+          <view wx:if="{{item.type=='video'}}" class="album-video">
+            <video src="{{item.src}}" controls/>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>
