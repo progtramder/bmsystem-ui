@@ -14,4 +14,4 @@
     </view>
   </view>
 </view>
-<image src="/image/home.png" bindtap="switchToHome" class="float-button"/>
+<image src="/image/home.png" bindtap="switchToHome" class="float-button home-button"/>

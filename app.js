@@ -22,7 +22,7 @@ App({
           if (res.code) {
             resolve(res.code)
           } else {
-            reject('登录失败！' + res.errMsg)
+            reject({errMsg: '登录失败'})
           }
         }
       })
@@ -40,11 +40,11 @@ App({
           if (res.statusCode == 200) {
             resolve(res.data)
           } else {
-            reject(res.errMsg)
+            reject({ errMsg: `服务器返回错误: ${res.statusCode}`})
           }
         },
         fail: err => {
-          reject('网络异常')
+          reject(err)
         }
       })
     })

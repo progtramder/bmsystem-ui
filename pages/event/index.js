@@ -48,7 +48,7 @@ Page({
       })
       setInterval(this.updateStatus, 1000)
     } catch (err) {
-      app.alert(err)
+      app.alert(err.errMsg)
     } finally {
       wx.hideNavigationBarLoading()
     }
@@ -113,7 +113,7 @@ Page({
           resolve(res.data)
         },
         fail: err => {
-          reject('网络异常')
+          reject(err)
         }
       })
     })
@@ -174,7 +174,7 @@ Page({
       }
       app.alert(res.errMsg)
     } catch (err) {
-      app.alert(err)
+      app.alert(err.errMsg)
     }
   }
 })

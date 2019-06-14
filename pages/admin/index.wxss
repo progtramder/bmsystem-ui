@@ -55,4 +55,6 @@ button::after {
 .seperator {
   height: 30rpx;
 }
-
+.home-button {
+  transform: translateY(-100rpx)
+}

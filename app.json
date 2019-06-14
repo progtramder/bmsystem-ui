@@ -45,5 +45,6 @@
     "connectSocket": 10000,
     "uploadFile": 60000,
     "downloadFile": 10000
-  }
+  },
+  "sitemapLocation": "sitemap17.json"
 }

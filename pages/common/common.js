@@ -9,7 +9,7 @@ function TabPage(obj) {
       await this.onLoadException(options)
       this.exception = { status: false }
     } catch (err) {
-      app.alert('网络异常, 请下拉页面重新加载')
+      app.alert(`${err.errMsg} 请下拉页面重新加载`)
       this.exception = { status: true, data: options }
     }
   }

@@ -61,11 +61,31 @@ Component({
             nodeListTemp.push(node)
           })
           let nodeList = this.data.nodeList;
+          let oldList = [], newList = []
+
+          nodeList.forEach(e => {
+            oldList.push(e.src)
+          })
           nodeList.splice(index + 1, 0, ...nodeListTemp);
           this.setData({
             nodeList
           })
           this.triggerEvent("add", nodeList);
+          nodeList.forEach(e => {
+            newList.push(e.src)
+          })
+          newList.forEach((e1, index) => {
+            let found = false
+            oldList.forEach(e2 => {
+              if (e1 == e2) {
+                found = true
+                return
+              }
+            })
+            if (found == false) {
+              console.log('index:', index, e1)
+            }
+          })
         },
       })
     },
@@ -87,12 +107,6 @@ Component({
           this.triggerEvent("add", nodeList);
         },
       })
-    },
-
-    onTextInput(e) {
-      const index = e.currentTarget.dataset.index;
-      let nodeList = this.data.nodeList;
-      nodeList[index].content = e.detail.value
     },
 
     imageTap(e) {

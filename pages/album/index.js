@@ -131,7 +131,7 @@ Page({
 
       wx.navigateBack()
     } catch (err) {
-      app.alert('上传失败, 请重试')
+      app.alert(`${err.errMsg} 请重试`)
       console.log(err)
     } finally {
       wx.hideLoading()
@@ -149,11 +149,11 @@ Page({
           if (res.statusCode == 200) {
             resolve(res.data.token)
           } else {
-            reject('服务器返回错误')
+            reject({ errMsg: `服务器返回错误: ${res.statusCode}` })
           }
         },
         fail: err => {
-          reject('网络异常')
+          reject(err)
         }
       })
     })
@@ -169,12 +169,11 @@ Page({
           if (res.statusCode == 200) {
             resolve(res.data)
           } else {
-            reject('服务器返回错误')
+            reject({ errMsg: `服务器返回错误: ${res.statusCode}` })
           }
         },
         fail: (err) => {
-          app.alert(err.errMsg)
-          reject('网络异常')
+          reject(err)
         }
       })
     })

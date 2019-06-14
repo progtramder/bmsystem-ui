@@ -11,17 +11,6 @@
   </view>
   <block wx:for="{{nodeList}}" wx:for-item="node" wx:for-index="index" wx:key="{{index}}">
     <view class="editor-node-wrapper">
-      <block wx:if="{{node.type === 'text'}}">
-        <textarea
-          class="editor-textarea"
-          value="{{node.content}}"
-          auto-height="true"
-          cursor-spacing="50"
-          data-index="{{index}}"
-          maxlength='-1'
-          bindinput="onTextInput">
-        </textarea>
-      </block>
       <block wx:if="{{node.type === 'image'}}">
         <image 
           class="editor-image" 
