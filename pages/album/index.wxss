@@ -1,4 +1,10 @@
-/* miniprogram/pages/album/index.wxss */.cover {
+.page-body {
+  margin-bottom: 100rpx;
+}
+.container {
+   background-color: #FBFBFB;
+}
+.cover {
   width: 100%;
   background-color: #F2F6FC;
   margin-bottom: 20rpx;
@@ -32,7 +38,7 @@
   line-height: 2rem;
   width: 100rpx;
   font-weight: bold;
-  font-size: 34rpx;
+  font-size: 36rpx;
 }
 .album-info-item > input {
   height: 2rem;

@@ -22,6 +22,29 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    /**
+     * 方法：更新元素列表
+     */
+    update: function(index, nodeListAdded) {
+      //splice 对于在0位置插入元素的情况下似乎会导致被加入的元素索引不正确
+      //故采用其他方法代替
+      let nodeListTemp = this.data.nodeList;
+      let nodeList = []
+      if (index == -1) {
+        nodeList.push(...nodeListAdded)
+        nodeList.push(...nodeListTemp)
+      } else {
+        nodeListTemp.splice(index + 1, 0, ...nodeListAdded);
+        nodeList = nodeListTemp
+      }
+      this.setData({
+        nodeList
+      })
+      this.triggerEvent("add", nodeList);
+    },
+    /**
+     * 事件：添加微信聊天图片
+     */
     addFile: function (e) {
       const index = e.currentTarget.dataset.index;
       wx.chooseMessageFile({
@@ -36,12 +59,7 @@ Component({
             }
             nodeListTemp.push(node)
           })
-          let nodeList = this.data.nodeList;
-          nodeList.splice(index + 1, 0, ...nodeListTemp);
-          this.setData({
-            nodeList
-          })
-          this.triggerEvent("add", nodeList);
+          this.update(index, nodeListTemp)
         },
       })
     },
@@ -60,32 +78,7 @@ Component({
             }
             nodeListTemp.push(node)
           })
-          let nodeList = this.data.nodeList;
-          let oldList = [], newList = []
-
-          nodeList.forEach(e => {
-            oldList.push(e.src)
-          })
-          nodeList.splice(index + 1, 0, ...nodeListTemp);
-          this.setData({
-            nodeList
-          })
-          this.triggerEvent("add", nodeList);
-          nodeList.forEach(e => {
-            newList.push(e.src)
-          })
-          newList.forEach((e1, index) => {
-            let found = false
-            oldList.forEach(e2 => {
-              if (e1 == e2) {
-                found = true
-                return
-              }
-            })
-            if (found == false) {
-              console.log('index:', index, e1)
-            }
-          })
+          this.update(index, nodeListTemp)
         },
       })
     },
@@ -99,12 +92,7 @@ Component({
             type: 'video',
             src: res.tempFilePath
           }
-          let nodeList = this.data.nodeList;
-          nodeList.splice(index + 1, 0, node);
-          this.setData({
-            nodeList
-          })
-          this.triggerEvent("add", nodeList);
+          this.update(index, [node])
         },
       })
     },

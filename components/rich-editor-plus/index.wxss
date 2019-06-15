@@ -37,7 +37,6 @@
   background: #F2F6FC;
   padding: 20rpx;
   box-sizing: border-box;
-  margin-bottom: 120rpx;
 }
 
 .editor-add-wrapper {

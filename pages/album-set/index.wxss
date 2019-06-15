@@ -5,3 +5,6 @@
   border-bottom-width: .1rpx;
   border-bottom-style: solid;
 }
+.page-body {
+  margin-bottom: 100rpx;
+}
