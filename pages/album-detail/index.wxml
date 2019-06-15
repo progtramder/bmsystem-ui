@@ -1,6 +1,6 @@
 <view class="container">
   <view class="page-body">
-    <view class="cover">
+    <view bindtap="coverTap" class="cover">
       <image src="{{album.cover}}"/>
       <view>{{album.subject}}</view>
     </view>

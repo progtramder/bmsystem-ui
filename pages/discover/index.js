@@ -65,5 +65,7 @@ TabPage({
     wx.reLaunch({
       url: '../admin/index',
     })
+  },
+  onShareAppMessage(res) {
   }
 })

@@ -5,6 +5,10 @@ Page({
     })
   },
 
+  onLoad() {
+    wx.hideShareMenu()
+  },
+
   onShareAppMessage(res) {
     return {
       title: '民办新世纪小学',

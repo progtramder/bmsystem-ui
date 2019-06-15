@@ -9,5 +9,8 @@
         <view>{{item}}</view>
       </navigator>
     </view>
+    <view wx:if="{{eventList.length==0}}" class="event-wrapper">
+      <view class="information">暂无报名信息哦~</view>
+    </view>
   </view>
 </view>

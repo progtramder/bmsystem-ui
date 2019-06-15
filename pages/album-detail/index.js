@@ -32,4 +32,12 @@ Page({
       current: e.currentTarget.dataset.imgpath
     })
   },
+
+  coverTap() {
+    console.log(this.data.cover)
+    wx.previewImage({
+      urls: [this.data.album.cover],
+      current: this.data.album.cover
+    })
+  }
 })

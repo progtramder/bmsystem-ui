@@ -36,3 +36,9 @@
 .picture image {
   width: 750rpx;
 }
+
+.information {
+  color: gray;
+  text-align: center;
+  font-style: italic;
+}
