@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    locked: false,
     albumId: '',
     cover: '',
     subject: '',
@@ -17,32 +18,67 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  async onLoad(options) {
     let title = "新建相册"
     if (options.id) {
       title = "相册编辑"
       this.setData({
         albumId: options.id
       })
-      wx.showNavigationBarLoading()
-      const db = wx.cloud.database();
-      db.collection('album').where({
-        _id: options.id
-      }).get().then((res) => {
-        wx.hideNavigationBarLoading()
+      try {
+        wx.showNavigationBarLoading()
+        const db = wx.cloud.database();
+        const res = await db.collection('album').where({
+          _id: options.id
+        }).get()
         let album = res.data[0]
-        this.selectComponent("#rich_editor").init(album.detail)
-        this.setData({
-          cover: album.cover,
-          subject: album.subject,
-          brief: album.brief,
-          detail: album.detail
-        })
-      })
+        
+        //检查相册是否被锁定
+        if (album.lock != 0) {
+          wx.showModal({
+            content: '相册正在被其他管理员编辑，请稍后再试',
+            confirmColor: '#F56C6C',
+            confirmText: '知道了',
+            showCancel: false,
+            success: res => {
+              wx.navigateBack()
+            }
+          })
+        } else {
+          //锁定相册
+          const res = await this.lockAlbum(options.id)
+          if (res) {
+            this.selectComponent("#rich_editor").init(album.detail)
+            this.setData({
+              locked: true,
+              cover: album.cover,
+              subject: album.subject,
+              brief: album.brief,
+              detail: album.detail
+            })
+          } else {
+            wx.showModal({
+              content: '相册锁定失败',
+              confirmColor: '#F56C6C',
+              confirmText: '知道了',
+              showCancel: false,
+              success: res => {
+                wx.navigateBack()
+              }
+            })
+          }
+        }  
+      } finally {
+        wx.hideNavigationBarLoading()
+      } 
     }
     wx.setNavigationBarTitle({
       title
     })
+  },
+
+  onUnload() {
+    this.unlockAlbum(this.data.albumId)
   },
 
   addCover() {
@@ -82,11 +118,14 @@ Page({
       if (albumId == '') {
         const res = await db.collection('album').add({
           data: {
+            lock: 1 //相册锁
           },
         })
         albumId = res._id
+        //此处设置albumId是为了应对在上传失败后重传时保证数据库中该album不会被多次创建
         this.setData({
-          albumId: albumId
+          albumId: albumId,
+          locked: true
         })
       }
 
@@ -191,5 +230,43 @@ Page({
     this.setData({
       detail: nodeList
     })
+  },
+
+  async lockAlbum(albumId) {
+    if (albumId != '') {
+      try {
+        await wx.cloud.callFunction({
+          name: 'database',
+          data: {
+            func: 'dbupdate',
+            collect: 'album',
+            docId: albumId,
+            data: {
+              lock: 1
+            }
+          }
+        })
+        return true
+      } catch(err) {
+        console.log(err)
+        return false
+      }   
+    }
+  },
+
+  async unlockAlbum(albumId) {
+    if (albumId != '' && this.data.locked) {
+      await wx.cloud.callFunction({
+        name: 'database',
+        data: {
+          func: 'dbupdate',
+          collect: 'album',
+          docId: albumId,
+          data: {
+            lock: 0
+          }
+        }
+      })
+    }
   }
 })

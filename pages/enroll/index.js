@@ -7,7 +7,7 @@ TabPage({
       wx.showNavigationBarLoading()
       const events = await app.getEvents()
       this.setData({
-        eventList: events.data
+        eventList: events.data ? events.data : []
       })
     } finally {
       wx.hideNavigationBarLoading()
