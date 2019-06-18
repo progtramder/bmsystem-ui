@@ -15,6 +15,9 @@
   overflow-x: hidden;
 }
 
+button::after {
+  border-style: none;
+}
 
 @font-face {font-family: "iconfont";
   src: url('iconfont.eot?t=1545482741625'); /* IE9*/

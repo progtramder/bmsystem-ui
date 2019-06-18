@@ -1,0 +1,122 @@
+<view class="container">
+<view class="page-body">
+  <view class="page-section">
+    <view class="page-element">
+      <input class="event-input" disabled="{{editMode}}" value="{{eventObject.event}}" bindinput="getEventName" placeholder="报名主题" />
+    </view>
+    <view wx:for="{{eventObject.sessions}}" wx:for-index="index" wx:for-item="item" wx:key="item" class="page-element">
+      <view data-index="{{index}}" bindtap="showSessionUpdate" class="session-wrapper">
+        <view>{{item.description}}</view>
+        <view>总数: {{item.limit}}人</view>
+        <view wx:if="{{safeMode}}" data-index="{{index}}" class="editor-delete iconfont icon-close" bindtap="deleteSession"></view>
+      </view>
+    </view>
+    <view wx:if="{{safeMode}}" class="page-element">
+      <view bindtap="showSessionAdd" class="element-add">
+        <image src="/image/plus.png"/> 
+        <view>报名场次</view>
+      </view>
+    </view>
+    <view wx:for="{{unsafeModeSessions}}" wx:for-index="index" wx:for-item="item" wx:key="item" class="page-element">
+      <view data-index="{{index}}" class="session-wrapper">
+        <view>{{item.description}}</view>
+        <view>总数: {{item.limit}}人</view>
+        <view data-index="{{index}}" class="editor-delete iconfont icon-close" bindtap="deleteUnsafeModeSession"></view>
+      </view>
+    </view>
+    <view wx:if="{{!safeMode}}" class="page-element">
+      <view bindtap="showSessionAdd" class="element-add">
+        <image src="/image/plus.png"/> 
+        <view>报名场次</view>
+      </view>
+    </view>
+  </view>
+  <view class="page-section">
+    <view class="page-element">
+      <view class="poster">
+        <image mode="widthFix" class="poster-image" src="{{poster}}"/>
+        <view wx:if="{{poster==''}}" class="poster-icon" bindtap="addPoster">
+          <image src="/image/plus.png" />
+          <view>海报图片</view>
+        </view>
+        <view wx:if="{{poster!=''}}" class="editor-delete iconfont icon-close" bindtap="deletePoster"></view>
+      </view>
+    </view>
+    <view wx:for="{{eventObject.form}}" wx:for-index="index" wx:for-item="item" wx:key="item" class="page-element">
+      <view data-index="{{index}}" class="form-wrapper">
+        <input wx:if="{{item.type=='text'}}" placeholder="{{item.name}}" />
+        <picker wx:if="{{item.type=='select'}}" range="{{item.value}}">
+            {{item.name}}
+        </picker>
+        <picker wx:if="{{item.type=='session'}}" range-key="description" range="{{eventObject.sessions}}">
+            {{item.name}}
+        </picker>
+        <view wx:if="{{safeMode}}" data-index="{{index}}" class="editor-delete iconfont icon-close" bindtap="deleteForm"></view>
+      </view>
+    </view>
+    <view wx:if="{{safeMode}}" class="page-element">
+      <view bindtap="addForm" class="element-add">
+        <image src="/image/plus.png"/> 
+        <view>用户界面</view>
+      </view>
+    </view>
+  </view>
+</view>
+</view>
+<view class="float-bar" bindtap="addEnroll">保存</view>
+
+<view bindtap="closeMask" wx:if="{{showMask}}" class="mask"></view>
+<view class="popup-menu {{showMask?'popup-menu-show':''}}">
+  <button bindtap="popFormInput" style="color:#0084FF;">输入控件</button>
+  <view style="height:2rpx"/>
+  <button bindtap="popFormSelect" style="color:#72D332;">选择控件</button>
+  <view style="height:2rpx"/>
+  <button bindtap="popFormSession" style="color:#F56C6C;">场次控件</button>
+  <view style="height:10rpx"/>
+  <button bindtap="closeMask">取消</button>
+</view>
+
+<view wx:if="{{showSessionAdd}}" class="popup-window">
+  <picker mode="date" start="{{timeBaseStart}}" end="{{timeBaseEnd}}" bindchange="bindDateChange">
+    <view>
+    {{sessionDate?sessionDate:'选择日期'}}
+    </view>
+  </picker>
+  <picker mode="time" start="05:00" end="23:59" bindchange="bindTimeChange">
+    <view>
+    {{sessionTime?sessionTime:'选择时间'}}
+    </view>
+  </picker>
+  <input class="popup-window-input" type="number" bindinput="getSessionLimit" placeholder="人数限制"/>
+  <button bindtap="addSession">确定</button>
+  <image  class="popup-window-close" bindtap="closePopupWindow" src="/image/close.png"/>
+</view>
+<view wx:if="{{showSessionUpdate}}" class="popup-window">
+  <view class="session-update-title">{{eventObject.sessions[editingSession].description}}</view>
+  <input class="popup-window-input" type="number" bindinput="getSessionLimit" placeholder="人数限制"/>
+  <button bindtap="updateSession">确定</button>
+  <image  class="popup-window-close" bindtap="closePopupWindow" src="/image/close.png"/>
+</view>
+<view wx:if="{{showFormInput}}" class="popup-window">
+  <input class="popup-window-input" bindinput="getFormInputName" auto-focus="true" placeholder="输入控件的名称"/>
+  <button bindtap="addFormInput">确定</button>
+  <image  class="popup-window-close" bindtap="closePopupWindow" src="/image/close.png"/>
+</view>
+<view wx:if="{{showFormSelect}}" class="popup-window">
+  <input class="popup-window-input" bindinput="getFormSelectName" auto-focus="true" placeholder="选择控件的名称"/>
+  <view class="option-input-wrapper" wx:for="{{formOptions}}" wx:for-index="index" wx:key="item">
+    <input cursor-spacing="30" class="option-input" data-index="{{index}}" bindinput="getFormOption"/>
+    <view data-index="{{index}}" class="editor-delete iconfont icon-close" bindtap="deleteFormOption"></view>
+  </view>
+  <view bindtap="formOptionAdd" class="option-add">
+    <image src="/image/plus.png"/> 
+    <view>选项</view>
+  </view>
+  <button bindtap="addFormSelect">确定</button>
+  <image class="popup-window-close" bindtap="closePopupWindow" src="/image/close.png"/>
+</view>
+<view wx:if="{{showFormSession}}" class="popup-window">
+  <input class="popup-window-input" bindinput="getFormSessionName" auto-focus="true" placeholder="场次控件的名称"/>
+  <button bindtap="addFormSession">确定</button>
+  <image class="popup-window-close" bindtap="closePopupWindow" src="/image/close.png"/>
+</view>

@@ -7,6 +7,11 @@
         <view>相册管理</view>
       </navigator>
       <view class="seperator"/>
+      <navigator url="../enroll-set/index" class="nav-item">
+        <image class="icon" src="/image/register-admin.png"/>
+        <view>报名管理</view>
+      </navigator>
+      <view class="seperator"/>
       <button open-type="share" hover-class="hover" class="invite-button">
         <image class="icon" src="/image/invite-admin.png"/>
         <view>邀请管理员</view>

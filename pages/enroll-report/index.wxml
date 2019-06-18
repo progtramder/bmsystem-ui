@@ -1,0 +1,12 @@
+<view class="container">
+  <view class="page-body">
+  <view class="body-wrapper">
+    <view class="seperator"></view>
+    <view hover-class="hover">
+      <image bindtap="viewDocument" class="doc-image" src="/image/excel.png" />
+    </view>
+    <view class="seperator"></view>
+    <button hover-class="hover" bindtap="copyLink" class="default-button">复制文件链接</button>
+  </view>
+  </view>
+</view>

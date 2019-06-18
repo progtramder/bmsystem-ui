@@ -81,8 +81,8 @@
   position: absolute;
   width: 50rpx;
   height: 50rpx;
-  top: -18rpx;
-  right: -18rpx;
+  top: -25rpx;
+  right: -25rpx;
   border-radius: 50%;
   background: #F56C6C;
   color: #fff;

@@ -50,7 +50,7 @@ button::after {
   width: 50rpx;
   height: 50rpx;
   box-sizing: border-box;
-  margin-right: 10rpx;
+  margin-right: 20rpx;
 }
 .seperator {
   height: 30rpx;

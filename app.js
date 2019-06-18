@@ -33,14 +33,31 @@ App({
     return new Promise((resolve, reject) => {
       wx.request({
         url,
-        header: {
-          'content-type': 'application/json'
-        },
         success: res => {
           if (res.statusCode == 200) {
             resolve(res.data)
           } else {
             reject({ errMsg: `服务器返回错误: ${res.statusCode}`})
+          }
+        },
+        fail: err => {
+          reject(err)
+        }
+      })
+    })
+  },
+
+  post(url, data) {
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url,
+        method: 'POST',
+        data,
+        success: res => {
+          if (res.statusCode == 200) {
+            resolve(res.data)
+          } else {
+            reject({ errMsg: `服务器返回错误: ${res.statusCode}` })
           }
         },
         fail: err => {
@@ -68,9 +85,38 @@ App({
     return this.request(url)
   },
 
+  startBaoming(code, event) {
+    const server = this.getServer()
+    const url = `https://${server}/start-baoming?code=${code}&event=${event}`
+    return this.request(url)
+  },
+
   getRegisterInfo(event, openId) {
     const server = this.getServer()
     const url = `https://${server}/register-info?event=${event}&openid=${openId}`
+    return this.request(url)
+  },
+
+  getEventInformation(code, event) {
+    const server = this.getServer()
+    const url = `https://${server}/event-information?event=${event}&code=${code}`
+    return this.request(url)
+  },
+  addEvent(code, eventObject) {
+    const server = this.getServer()
+    const url = `https://${server}/add-event?code=${code}`
+    return this.post(url, eventObject)
+  },
+
+  editEvent(code, eventObject) {
+    const server = this.getServer()
+    const url = `https://${server}/edit-event?code=${code}`
+    return this.post(url, eventObject)
+  },
+
+  removeEvent(code, event) {
+    const server = this.getServer()
+    const url = `https://${server}/remove-event?event=${event}&code=${code}`
     return this.request(url)
   },
 

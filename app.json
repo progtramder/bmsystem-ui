@@ -10,7 +10,11 @@
     "components/exhibit/index",
     "pages/album-detail/index",
     "pages/album-set/index",
-    "pages/admin-enroll/index"
+    "pages/admin-enroll/index",
+    "pages/enroll-set/index",
+    "pages/enroll-edit/index",
+    "pages/enroll-status/index",
+    "pages/enroll-report/index"
   ],
   "window": {
     "backgroundColor": "#FBFBFB",

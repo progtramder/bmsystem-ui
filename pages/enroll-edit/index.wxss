@@ -1,0 +1,251 @@
+.page-body {
+  margin-bottom: 180rpx;
+}
+.page-section {
+  display: flex;
+  flex-direction: column;
+  margin: 50rpx 50rpx 0;
+}
+
+.page-element {
+  margin-bottom: 30rpx;
+}
+.event-input {
+  height: 100rpx;
+  border-style: solid;
+  border-width: 5rpx;
+  border-color:beige;
+  padding: 0 10rpx;
+  color: gray;
+}
+
+.poster {
+  width: 100%;
+  background-color: #FBFBFB;
+  position: relative;
+}
+.poster-image {
+  display: inline-block;
+  width: 100%;
+}
+.poster-icon {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  border: dashed 4rpx #C0C4CC;
+  background-color: #FBFBFB;
+  padding: 10rpx;
+}
+.poster-icon image {
+  width: 80rpx;
+  height: 80rpx;
+  box-sizing: border-box;
+}
+.poster-icon view {
+  margin-top: 10rpx;
+  color: gray;
+}
+.editor-delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 40rpx;
+  height: 40rpx;
+  top: -20rpx;
+  right: -20rpx;
+  border-radius: 50%;
+  background: #F56C6C;
+  color: #fff;
+  z-index: 100;
+}
+
+.session-wrapper {
+  border: solid 2rpx #C0C4CC;
+  line-height: 70rpx;
+  height: 70rpx;
+  background-color: #FBFBFB;
+  padding: 0 10rpx;
+  color: gray;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.element-add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: dashed 4rpx #C0C4CC;
+  line-height: 70rpx;
+  height: 70rpx;
+  background-color: #FBFBFB;
+}
+.element-add view {
+  margin-left: 10rpx;
+  color: gray;
+}
+.element-add image {
+  width: 40rpx;
+  height: 40rpx;
+  box-sizing: border-box;
+}
+
+.form-wrapper {
+  border: solid 5rpx beige;
+  height: 100rpx;
+  background-color: #FBFBFB;
+  color: gray;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.form-wrapper input {
+  height: 100rpx;
+  padding: 0 10rpx;
+  color: gray;
+  box-sizing: border-box;
+}
+.form-wrapper picker {
+  height: 100rpx;
+  line-height: 100rpx;
+  padding: 0 10rpx;
+  color: gray;
+  box-sizing: border-box;
+}
+
+.mask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  background-color: black;
+  opacity: 0.3;
+}
+
+.popup-menu {
+  background-color: #A4A4A4;
+  position: fixed;
+  width: 100%;
+  bottom: -500rpx;
+  left: 0;
+  z-index: 101;
+}
+.popup-menu-show {
+  transform: translateY(-500rpx);
+  transition: .3s;
+}
+
+.popup-menu button {
+  background-color: white;
+  border-radius: 0;
+  height: 120rpx;
+  line-height: 120rpx;
+}
+
+.popup-window {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  background-color: #FBFBFB;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 32rpx;
+  padding-top: 180rpx;
+}
+
+.popup-window-input {
+  padding: 0 10rpx;
+  width: 90%;
+  height: 100rpx;
+  border: solid 3rpx gray;
+  background-color: #FBFBFB;
+  color: gray;
+  box-sizing: border-box;
+  margin-bottom: 50rpx;
+}
+
+.popup-window picker {
+  padding: 0 10rpx;
+  width: 90%;
+  height: 100rpx;
+  line-height: 100rpx;
+  border: solid 3rpx gray;
+  background-color: #FBFBFB;
+  color: gray;
+  box-sizing: border-box;
+  margin-bottom: 50rpx;
+}
+
+.popup-window-close {
+  position: absolute;
+  width: 40rpx;
+  height: 40rpx;
+  box-sizing: border-box;
+  top: 25rpx;
+  right: 25rpx;
+  z-index: 1000;
+}
+
+.popup-window button {
+  width: 90%;
+  height: 100rpx;
+  line-height: 100rpx;
+  background-color: #FBFBFB;
+  color: #0084FF;
+  box-sizing: border-box;
+  border-radius: 0;
+  border: solid 3rpx gray;
+}
+
+.option-add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: dashed 4rpx #C0C4CC;
+  line-height: 70rpx;
+  width: 90%;
+  height: 70rpx;
+  background-color: #FBFBFB;
+  margin-bottom: 50rpx;
+  box-sizing: border-box;
+}
+.option-input-wrapper {
+  position: relative;
+  width: 90%;
+  box-sizing: border-box;
+}
+.option-input {
+  padding: 0 10rpx;
+  height: 70rpx;
+  border: solid 3rpx gray;
+  background-color: #FBFBFB;
+  color: gray;
+  box-sizing: border-box;
+  margin-bottom: 10rpx;
+}
+.session-update-title {
+  margin-bottom: 50rpx;
+  color: gray;
+}
+.option-add view {
+  margin-left: 10rpx;
+  color: gray;
+}
+.option-add image {
+  width: 40rpx;
+  height: 40rpx;
+  box-sizing: border-box;
+}

@@ -1,0 +1,23 @@
+<view class="container">
+  <view class="page-body">
+    <view class="event-wrapper">
+      <navigator wx:for="{{eventList}}" wx:for-index="index" wx:key="item" url="../enroll-status/index?event={{item}}" class="nav-item">
+        <image class="icon" src="/image/baoming.png"/>
+        <view>{{item}}</view>
+        <image data-index="{{index}}" catchtap="enrollEdit" class="edit-icon" src="/image/enroll-edit.png"/>
+      </navigator>
+    </view>
+</view>
+</view>
+<view class="float-bar" bindtap="createEnroll">新建报名</view>
+
+<view bindtap="closeModal" wx:if="{{showModal}}" class="modal"></view>
+<view class="popup {{showModal?'popup-show':''}}">
+  <button bindtap="editEnroll" style="color:#0084FF;">编辑报名</button>
+  <view style="height:2rpx"/>
+  <button bindtap="deleteEnroll" style="color:#F56C6C;">删除报名</button>
+  <view style="height:2rpx"/>
+  <button bindtap="getQrCode" style="color:#72D332;">生成小程序码</button>
+  <view style="height:10rpx"/>
+  <button bindtap="closeModal">取消</button>
+</view>

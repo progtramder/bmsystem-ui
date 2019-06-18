@@ -1,0 +1,16 @@
+<view class="container">
+<view class="page-body">
+  <button disabled="{{started|expired}}" class="start" bindtap="handleStart">{{expired?'报名已结束':(started?'报名已开始...':'启动报名')}}</button>
+  <view class="statistics">
+    <view class="report">
+      <view>报名统计</view>
+      <navigator url="../enroll-report/index?event={{event}}">查看明细</navigator>
+    </view>
+    <view class="stat-list" wx:for="{{sessions}}" wx:key="item">
+      <view>{{item.description}}</view>
+      <view>总数：{{item.limit}}</view>
+      <view>已报：{{item.number}}</view>
+    </view>
+  </view>
+</view>
+</view>

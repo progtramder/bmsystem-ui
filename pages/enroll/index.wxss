@@ -21,6 +21,7 @@
   color: orange;
   font-weight: bold;
   font-size: 35rpx;
+  background-color: #FBFBFB;
 }
 .icon {
   width: 50rpx;
