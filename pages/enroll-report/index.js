@@ -1,3 +1,4 @@
+const regeneratorRuntime = require("../common/runtime")
 const app = getApp()
 Page({
 
@@ -17,8 +18,9 @@ Page({
     })
   },
 
-  viewDocument() {
-    const url = `https://${app.getServer()}/report/${this.data.event}.xlsx`
+  async viewDocument() {
+    const code = await app.getCode()
+    const url = `https://${app.getServer()}/report/${this.data.event}.xlsx?code=${code}`
     wx.showLoading({
       title: '正在下载文件',
     })
@@ -39,7 +41,7 @@ Page({
   },
 
   copyLink() {
-    const link = `https://${app.getServer()}/report/${this.data.event}.xlsx`
+    const link = `https://${app.getServer()}/report/`
     wx.setClipboardData({
       data: link,
       success(res) {
