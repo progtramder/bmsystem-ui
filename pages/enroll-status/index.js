@@ -39,15 +39,23 @@ Page({
       sessions
     })
   },
-  async handleStart() {
-    try {
-      const code = await app.getCode()
-      await app.startBaoming(code, this.data.event)
-      this.setData({
-        started: true
-      })
-    } catch(err) {
-      app.alert(err.errMsg)
-    }
+  handleStart() {
+    wx.showModal({
+      content: `确定要启动${this.data.event}?`,
+      confirmColor: '#F56C6C',
+      success: async (res) => {
+        if (res.confirm) {
+          try {
+            const code = await app.getCode()
+            await app.startBaoming(code, this.data.event)
+            this.setData({
+              started: true
+            })
+          } catch (err) {
+            app.alert(err.errMsg)
+          }
+        }
+      }
+    })
   },
 })
