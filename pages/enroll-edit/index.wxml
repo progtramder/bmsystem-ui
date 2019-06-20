@@ -82,7 +82,7 @@
     {{sessionDate?sessionDate:'选择日期'}}
     </view>
   </picker>
-  <picker mode="time" start="05:00" end="23:59" bindchange="bindTimeChange">
+  <picker mode="time" start="00:00" end="23:59" bindchange="bindTimeChange">
     <view>
     {{sessionTime?sessionTime:'选择时间'}}
     </view>
