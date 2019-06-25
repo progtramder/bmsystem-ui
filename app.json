@@ -14,7 +14,9 @@
     "pages/enroll-set/index",
     "pages/enroll-edit/index",
     "pages/enroll-status/index",
-    "pages/enroll-report/index"
+    "pages/enroll-report/index",
+    "pages/picker/index",
+    "components/navigation-bar/index"
   ],
   "window": {
     "backgroundColor": "#FBFBFB",

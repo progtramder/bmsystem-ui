@@ -33,7 +33,7 @@ TabPage({
         wx.setStorageSync('isAdmin', isAdmin)
       }
       
-      const res = await db.collection('album').limit(10).field({
+      const res = await db.collection('album').orderBy('timeStamp', 'desc').limit(10).field({
         detail: false
       }).get()
       this.setData({
@@ -50,7 +50,7 @@ TabPage({
       wx.showLoading()
       const db = wx.cloud.database();
       let albums = this.data.albums
-      const res = await db.collection('album').skip(albums.length).limit(10).field({
+      const res = await db.collection('album').orderBy('timeStamp', 'desc').skip(albums.length).limit(10).field({
         detail: false
       }).get()
       albums.push(...res.data)

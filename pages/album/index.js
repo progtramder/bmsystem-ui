@@ -27,14 +27,19 @@ Page({
       })
       try {
         wx.showNavigationBarLoading()
+        let res = await wx.cloud.callFunction({ name: 'login' })
+        const { openId } = res.result
+        //记录正在编辑相册的作者身份
+        this.data.openId = openId 
+
         const db = wx.cloud.database();
-        const res = await db.collection('album').where({
+        res = await db.collection('album').where({
           _id: options.id
         }).get()
         let album = res.data[0]
         
         //检查相册是否被锁定
-        if (album.lock != 0) {
+        if (album.lockId != '' && album.lockId != openId) {
           wx.showModal({
             content: '相册正在被其他管理员编辑，请稍后再试',
             confirmColor: '#F56C6C',
@@ -46,7 +51,7 @@ Page({
           })
         } else {
           //锁定相册
-          const res = await this.lockAlbum(options.id)
+          const res = await this.lockAlbum(options.id, openId)
           if (res) {
             this.selectComponent("#rich_editor").init(album.detail)
             this.setData({
@@ -118,7 +123,8 @@ Page({
       if (albumId == '') {
         const res = await db.collection('album').add({
           data: {
-            lock: 1 //相册锁
+            lockId: this.data.openId, //相册锁
+            timeStamp: new Date().getTime()
           },
         })
         albumId = res._id
@@ -232,7 +238,7 @@ Page({
     })
   },
 
-  async lockAlbum(albumId) {
+  async lockAlbum(albumId, openId) {
     if (albumId != '') {
       try {
         await wx.cloud.callFunction({
@@ -242,7 +248,7 @@ Page({
             collect: 'album',
             docId: albumId,
             data: {
-              lock: 1
+              lockId: openId
             }
           }
         })
@@ -263,7 +269,7 @@ Page({
           collect: 'album',
           docId: albumId,
           data: {
-            lock: 0
+            lockId: ''
           }
         }
       })

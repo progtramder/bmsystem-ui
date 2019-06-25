@@ -1,0 +1,21 @@
+<navigationBar text="管理员" home="true" bindbackhome="goHome"></navigationBar>
+<view bindtap="showWindow" class="picker">{{selected}}</view>
+
+<!-- picker component -->
+<view catchtouchmove=";" bindtap="closeWindow" wx:if="{{showWindow}}" class="mask"></view>
+<view catchtouchmove=";" style="height:{{winHeight/2}}rpx" class="picker-container {{showWindow?'picker-container-show':''}}">
+  <view class="control-bar">
+    <view bindtap="closeWindow">取消</view>
+    <view bindtap="confirm" style="color:{{comfirmColor}}">确定</view>
+  </view>
+  <view catchtouchstart="selectionTouchStart" catchtouchend="selectionTouchEnd" catchtouchmove="selectionTouchMove" style="height:{{winHeight/2-80}}rpx" class="selections">
+    <view wx:for="{{selections}}" wx:for-index="index" wx:key="item" 
+      class="{{!disabled[index]&&(direction>=0&&(pivot<=index*baseAngle+15&&pivot>=index*baseAngle-15)||direction<=0&&(pivot>=(index-1)*baseAngle+15&&pivot<=index*baseAngle))?'':'text-gray'}}"
+      style="transform:translateY(-50%) rotateX({{pivot-baseAngle*index}}deg) translateZ({{baseY}}rpx);transition:{{tranTime}}s;"
+    >
+      {{item}}
+    </view>
+    <view style="top:{{(winHeight/2-80)/2-50}}rpx;" class="select-window-line"></view>
+    <view style="top:{{(winHeight/2-80)/2+50}}rpx;" class="select-window-line"></view>
+  </view>
+</view>

@@ -1,0 +1,51 @@
+.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+.title-container {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.capsule {
+  margin-left: 10px;
+  height: 80rpx;
+  background-color: #F6F6F6;
+  display: flex;
+  align-items: center;
+}
+.capsule > view {
+  width: 45px;
+  height: 60%;
+  position: relative;
+}
+.capsule > view:nth-child(2) {
+  border-left: 1px solid #fff;  
+}
+.capsule image {
+  width: 80%;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.title {
+  color: black;
+  position: absolute;
+  left: 104px;
+  right: 104px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 38rpx;
+  font-weight: bold;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+}
